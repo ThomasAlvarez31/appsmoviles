@@ -1,0 +1,30 @@
+	abstract class TransporteCarga(
+    val patente: String,
+    val peso: Double,
+    val capacidad: Double,
+) {
+    abstract fun calcularCostoEnvio(): Double
+
+    open fun mostrarInfo(){
+        println("Patente $patente | Peso: $peso | Capacidad: $capacidad | Costo: ${calcularCostoEnvio()}" )
+    }
+}
+
+class Camion(patente: String,peso: Double,capacidad: Double,):
+        TransporteCarga(patente, peso, capacidad) {
+            override fun calcularCostoEnvio(): Double {
+                return peso * 2.5
+            }
+        }
+class Camioneta(patente: String,peso: Double,capacidad: Double,):
+    TransporteCarga(patente, peso, capacidad) {
+    override fun calcularCostoEnvio(): Double {
+        return peso * 1.5*100
+    }
+}
+class Drone(patente: String,peso: Double,capacidad: Double,):
+    TransporteCarga(patente, peso, capacidad) {
+    override fun calcularCostoEnvio(): Double {
+        return peso * 5.0
+    }
+}
